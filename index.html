@@ -1,44 +1,163 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I Love You, Sherie ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-family: Georgia, serif;
-      color: white;
-      background: linear-gradient(135deg, #ff758c, #a00050);
-      padding: 20px;
-      box-sizing: border-box;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiny Goodnight Bubble</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* Soft floating stars */
+  .stars {
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+      radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1px 1px at 230px 80px, #fff, transparent),
+      radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent);
+    background-repeat: repeat;
+    background-size: 400px 200px;
+    animation: twinkle 8s ease-in-out infinite alternate;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.4; }
+    to   { opacity: 0.8; }
+  }
+
+  /* The shiny bubble */
+  .bubble {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: 
+      radial-gradient(circle at 30% 30%, 
+        rgba(255, 255, 255, 0.35) 0%,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(120, 180, 255, 0.15) 50%,
+        rgba(80, 120, 220, 0.25) 100%);
+    box-shadow: 
+      0 0 40px rgba(120, 180, 255, 0.4),
+      0 0 80px rgba(100, 150, 255, 0.2),
+      inset 0 0 60px rgba(255, 255, 255, 0.15),
+      inset 20px 20px 40px rgba(255, 255, 255, 0.25),
+      inset -15px -15px 30px rgba(0, 40, 100, 0.3);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Bright specular highlight */
+  .bubble::before {
+    content: '';
+    position: absolute;
+    top: 18%;
+    left: 22%;
+    width: 55px;
+    height: 35px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, 
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.4) 40%,
+      transparent 70%);
+    transform: rotate(-25deg);
+    filter: blur(1px);
+  }
+
+  /* Soft secondary highlight */
+  .bubble::after {
+    content: '';
+    position: absolute;
+    bottom: 22%;
+    right: 18%;
+    width: 30px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    filter: blur(2px);
+  }
+
+  .text {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 2.4rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-shadow: 
+      0 0 12px rgba(180, 220, 255, 0.8),
+      0 0 25px rgba(140, 190, 255, 0.5);
+    text-align: center;
+  }
+
+  .sub {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: rgba(220, 235, 255, 0.75);
+    text-shadow: 0 0 10px rgba(150, 200, 255, 0.4);
+  }
+
+  /* Gentle floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
     }
-    .card {
-      max-width: 420px;
-      padding: 35px 24px;
-      border-radius: 25px;
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 10px 35px #59002066;
+    50% {
+      transform: translateY(-18px) scale(1.02);
     }
-    .heart { font-size: 60px; }
-    h1 { font-size: 36px; }
-    p { font-size: 19px; line-height: 1.7; }
-  </style>
+  }
+
+  /* Soft outer glow pulse */
+  .glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+      rgba(120, 180, 255, 0.25) 0%, 
+      transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(0.95); }
+    50%      { opacity: 0.9; transform: scale(1.05); }
+  }
+</style>
 </head>
 <body>
-  <div class="card">
-    <div class="heart">❤️</div>
-    <h1>I Love You, Sherie</h1>
-    <p>My love, you are so special to me.</p>
-    <p>You have a beautiful place in my heart, and I am grateful to have you in my life.</p>
-    <p>I choose you, today and always. 💕</p>
-    <h2>Forever yours ❤️</h2>
+  <div class="stars"></div>
+
+  <div class="glow"></div>
+  <div class="bubble">
+    <div class="text">Goodnight</div>
+    <div class="sub">✦ sleep well ✦</div>
   </div>
 </body>
 </html>
